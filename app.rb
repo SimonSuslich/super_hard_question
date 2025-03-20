@@ -1,5 +1,3 @@
-re
-
 ##
 # Klassen Num_base representerar ett tal i en specifik talbas och ger funktionalitet 
 # för att konvertera det till en annan bas.
@@ -79,10 +77,12 @@ class Num_base
     end
     return fraction_value.to_s if new_base == 10
     
+    numerals_new_base = get_available_digits(new_base)
+
     while precision > 0
       fraction_value *= new_base
       digit = fraction_value.to_i
-      result += get_available_digits(new_base)[digit]
+      result += numerals_new_base[digit]
       fraction_value -= digit
       precision -= 1
     end
