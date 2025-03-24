@@ -75,8 +75,9 @@ class Num_base
       raise "Invalid character '#{char}' for base #{@base}" if digit_value.nil?
       fraction_value += digit_value / (@base.to_f**(index + 1))
     end
-    return fraction_value.to_s if new_base == 10
-    
+
+    return fraction_value.to_s[2..-1] if new_base == 10
+
     numerals_new_base = get_available_digits(new_base)
 
     while precision > 0
@@ -86,7 +87,7 @@ class Num_base
       fraction_value -= digit
       precision -= 1
     end
-    
+
     result
   end
 end
